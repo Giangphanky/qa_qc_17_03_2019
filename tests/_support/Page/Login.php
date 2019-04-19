@@ -4,12 +4,18 @@ namespace Page;
 class Login
 {
     // include url of current page
-
     public static $URL = '/login';
 
-    public static $usernameField = '#mainForm #username';
-    public static $passwordField = '#mainForm input[name=password]';
-    public static $loginButton = '#mainForm input[type=submit]';
+    public static $usernameField = '//*[@id="usernameOrEmail"]';
+    public static $passwordField = '//*[@id="password"]';
+    public static $ContinueButton = '//*[@id="primary"]/div/main/div/div[1]/div/form/div[1]/div[2]/button';
+    public static $loginButton = '//*[@id="primary"]/div/main/div/div[1]/div/form/div[1]/div[2]/button';
+
+    public static $ContinueWithGoogleButton = '//*[@id="primary"]/div/main/div/div[1]/div/form/div[2]/div[2]/div/div/div/button';
+    public static $CreateNewAccountLink ='//*[@id="primary"]/div/main/div/div[2]/a[1]';
+    public static $EmailMeLoginLink ='//*[@id="primary"]/div/main/div/div[2]/a[2]';
+    public static $LostPassLink ='//*[@id="primary"]/div/main/div/div[2]/a[3]';
+    public static $BackToWordPressLink ='//*[@id="primary"]/div/main/div/div[2]/a[4]';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

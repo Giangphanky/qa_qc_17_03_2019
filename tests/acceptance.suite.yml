@@ -3,9 +3,10 @@ modules:
     enabled:
         - JoomlaBrowser
 
+
     config:
         JoomlaBrowser:
-            url: 'http://localhost/tests/joomla-cms3'     # the url that points to the joomla installation at /tests/system/joomla-cms
+            url: 'https://wordpress.com'     # the url that points to the joomla installation at /tests/system/joomla-cms
             browser: 'chrome'
             window_size: 1024x768
             capabilities:
