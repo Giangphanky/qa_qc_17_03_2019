@@ -2,6 +2,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - JoomlaBrowser
+        - Asserts
 
 
     config:
@@ -21,6 +22,6 @@ modules:
             database prefix: 'jos_'                # DB Prefix for tables
             install sample data: 'No'              # Do you want to Download the Sample Data Along with Joomla Installation, then keep it Yes
             sample data: 'Default English (GB) Sample Data'    # Default Sample Data
-            admin email: 'admin@mydomain.com'      # email Id of the Admin
+            admin email: 'admin@mydomain.com'      # email Id of the LoginSteps
             language: 'English (United Kingdom)'   # Language in which you want the Application to be Installed
             joomla folder: 'home/.../path to Joomla Folder' # Path to Joomla installation where we execute the tests
