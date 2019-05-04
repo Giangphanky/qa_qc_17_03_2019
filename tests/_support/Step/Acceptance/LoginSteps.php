@@ -36,7 +36,8 @@ class LoginSteps extends \AcceptanceTester
         $I->waitForElementClickable(LoginPage::$savePasswordButton);
         $I->click(LoginPage::$savePasswordButton);
         //$I->waitForText('If you can\'t think of a good password use the button below to generate one.', 30);
-        $I->wait(5);
+        $I->wait(5);//Chõ này em cần wait cho page load xong, nhưng đây là load chính page của nó, không
+        //có phần tử nào khác biệt hết, nên em để wait cứng
     }
 
     /**
@@ -50,11 +51,68 @@ class LoginSteps extends \AcceptanceTester
         $I->amOnPage(LoginPage::$URL);
         $I->fillField(LoginPage::$usernameField, $name);
         $I->click(LoginPage::$continueButton);
-        $I->waitForText('Password',30);
+        $I->waitForElementVisible(LoginPage::$passwordField, 30);
         $I->fillField(LoginPage::$passwordField, $password);
         $I->click(LoginPage::$loginButton);
     }
 
+    /**
+     * @throws \Exception
+     * To check Login is sucsess
+     */
+    public function checkLoginSuccess()
+    {
+        $I = $this;
+        $I->waitForText(LoginPage::$evidenceLoginSucess,30);
+    }
+
+    /**
+     * @param $userName
+     * @param $pass
+     * @param $function
+     * @throws \Exception
+     * To check many cases login wrong value
+     */
+    public function loginWrongValue($userName, $pass, $function)
+    {
+        $I = $this;
+        $I->amOnPage(LoginPage::$URL);
+        switch ($function)
+        {
+            case 'userNameEmpty':
+                $I->comment('userName empty');
+                $I->loginWithEmail('                  ');
+                $I->waitForText(LoginPage::$errorUsernameEmpty, 30);
+                break;
+            case 'userNameNull':
+                $I->click(LoginPage::$continueButton);
+                $I->waitForText(LoginPage::$errorUsernameEmpty, 30);
+                break;
+            case 'passEmpty':
+                $I->loginWithEmail($userName);
+                $I->waitForElementVisible(LoginPage::$passwordField,30);
+                $I->fillField(LoginPage::$passwordField, '                       ');
+                $I->click(LoginPage::$loginButton);
+                $I->waitForText(LoginPage::$errorPassEmpty, 30);
+                break;
+            case 'passNull':
+                $I->loginWithEmail($userName);
+                $I->waitForElementVisible(LoginPage::$passwordField,30);
+                $I->click(LoginPage::$loginButton);
+                $I->waitForText(LoginPage::$errorPassEmpty, 30);
+                break;
+            case 'userNameInvalid':
+                $I->loginWithEmail($userName);
+                $I->waitForText(LoginPage::$errorUsernameInvalid, 30);
+                break;
+            case 'passIncorrect':
+                $I->loginWithEmailAndPass($userName,$pass);
+                $I->waitForText(LoginPage::$errorPassIncorrect,30);
+                break;
+            default:
+                break;
+        }
+    }
     /**
      * @param $name
      * Function login with only email

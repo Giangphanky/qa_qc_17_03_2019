@@ -9,9 +9,17 @@ class LoginPage
     // include url of promo page/
     public static $URLPromo = '/?apppromo';
 
+    // include url of sign up page
     public static $URLStartPage = '/start/user';
 
+    // include url of login link page/
     public static $URLLoginLink = '/log-in/link';
+
+    // include url of lost pass page/
+    public static $URLLostPass = 'wp-login.php?action=lostpassword';
+
+    // include url of home page
+    public static $URLHomePage = '/';
 
     /**
      * @var string
@@ -111,6 +119,18 @@ class LoginPage
      */
     public static $iconHideShowPass = '//div[@class="form-password-input"]/span';
 
+
+    /**
+     * @var string
+     * since 1.0.0
+     */
+    public static $evidenceLoginSucess = 'My Site';
+
+    public static $errorUsernameEmpty = 'Please enter a username or email address';
+    public static $errorPassEmpty = 'Don\'t forget to enter your password';
+    public static $errorUsernameInvalid = 'User does not exist';
+    public static $errorPassIncorrect = 'Oops, that\'s not the right password. Please try again!';
+    public static $errorLimitLogin = 'You have exceeded the login limit. Please wait a few minutes and try again.';
     /**
      * Basic route example for your current URL
      * You can append any additional parameter to URL
