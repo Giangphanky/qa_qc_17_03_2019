@@ -23,6 +23,12 @@ class LoginGithubSteps extends \AcceptanceTester
         $I->click(Login::$loginButton);
     }
 
+    /**
+     * @param $name
+     * @param $descript
+     * @throws \Exception
+     * function create Respo
+     */
     public function createRespo($name, $descript)
     {
         $I = $this;
