@@ -1,7 +1,7 @@
 <?php
 namespace Step\Acceptance;
 use Page\LoginPage as LoginPage;
-class LoginSteps extends \AcceptanceTester
+class LoginWordpressSteps extends \AcceptanceTester
 {
 
     /**
@@ -35,9 +35,9 @@ class LoginSteps extends \AcceptanceTester
         $I->fillField(LoginPage::$newPasswordField,$newPassword);
         $I->waitForElementClickable(LoginPage::$savePasswordButton);
         $I->click(LoginPage::$savePasswordButton);
-        //$I->waitForText('If you can\'t think of a good password use the button below to generate one.', 30);
-        $I->wait(5);//Chõ này em cần wait cho page load xong, nhưng đây là load chính page của nó, không
-        //có phần tử nào khác biệt hết, nên em để wait cứng
+
+        //$isDisabled = $I->grabAttributeFrom(LoginPage:: savePasswordButton, 'disabled');
+        //$I->assertTrue($isDisabled == 'disabled');
     }
 
     /**
